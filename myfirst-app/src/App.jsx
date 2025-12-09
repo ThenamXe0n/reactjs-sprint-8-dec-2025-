@@ -1,35 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import "./App.css";
+import NavBar from "./components/NavBar";
+import MyButton from "./components/MyButton"
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={"https://tse4.mm.bing.net/th/id/OIP.vFuecPRIgrAx_nWCyPZoKgHaE6?pid=Api&P=0&h=220"} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Mindcoders</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          get started
-        </button>
-        <p>
-          my first react app
-        </p>
-      </div>
-      <p className="read-the-docs">
-       my web StrictMode
-      </p>
+      <NavBar /> //self closing component tag
+      <h1>React js sprint</h1>
+      <p>we are learning about react components</p>
+      <img src="./react-logo.png" alt="react logo" />
+      <MyButton />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
