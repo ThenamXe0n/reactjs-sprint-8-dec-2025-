@@ -1,40 +1,58 @@
-import MyButton from "./MyButton";
-//you can use js code here
+const headerstyle = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  backgroundColor: "black",
+  color: "white",
+  padding:"10px"
+};
+
+const navStyle = {
+  display: "flex",
+  gap: "16px",
+};
+
+const mailBoxStyle = {
+    display:"flex",
+    gap:"10px",
+    alignItems:"center"
+}
 
 function NavBar() {
-  // you can use js code here
-  const nav1 = "Home";
-  const nav2 = "about";
-  const nav3 = "services";
-  const nav4 = "blog";
-
-  const h1Styling = {
-    backgroundColor: "red",
-    color: "white",
-    fontSize: "5rem",
-  };
-
   return (
-    <>
-      {/* //you cannot use js code here , use jsx  */}
-      <header className="header">
-        <nav>
-          <h4>{nav1}</h4>
-          <h4>{nav2}</h4>
-          <h4>{nav3}</h4>
-          <h4>{nav4}</h4>
-          <MyButton />
-          <MyButton />
-          <MyButton />
-          <MyButton />
-        </nav>
-      </header>
-      <div>
-        <h1 style={h1Styling}>sum of 2 and 6 is = 2+6</h1>
+    <header style={headerstyle}>
+      <div id="logo">
+        <span>mind</span>
+        <span>coders</span>
       </div>
-    </> // these are called empty tags or fragment tags in react js
-  );
-} // this is an functional component in react js
+      <nav style={navStyle}>
+        <span>Home</span>
+        <span>About</span>
+        <span>Skills</span>
+        <span>Experience</span>
+        <span>Contact</span>
+      </nav>
+      <div style={mailBoxStyle}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          height={30}
+          width={30}
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
+          />
+        </svg>
 
-//first way to export component
+        <span>mindcoder@gmail.com</span>
+      </div>
+    </header>
+  );
+}
+
 export default NavBar;
