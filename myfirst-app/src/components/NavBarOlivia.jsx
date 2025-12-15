@@ -6,7 +6,7 @@ const NavBarOlivia = () => {
   return (
     <header
       style={{border:"2px solid"}}
-      className="w-[80vw] mx-auto bg-[#2d4d36] text-white fixed mt-4 top-0 left-1/2 -translate-x-1/2 p-3 justify-between items-center rounded-full flex"
+      className="w-[80vw] mx-auto bg-[#2d4d36] text-white  mt-4 top-0 left-1/2 -translate-x-1/2 p-3 justify-between items-center rounded-full flex"
     >
     
       <div id="logo" className="flex items-center gap-x-3">
