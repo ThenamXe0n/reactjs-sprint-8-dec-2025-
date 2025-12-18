@@ -1,10 +1,17 @@
 import React from "react";
 
-function MyButton({ title, icon }) {
+function MyButton({
+  title,
+  icon,
+  bgcolor = "bg-neutral-700",
+  fontcolor = "white",
+}) {
   return (
-    <div className="bg-neutral-700 capitalize flex items-center gap-x-1 justify-center w-fit text-white font-bold px-3 py-1  rounded-full">
+    <div
+      className={` capitalize flex items-center gap-x-1 justify-center w-full  font-bold px-3 py-1  rounded-full ${bgcolor} ${fontcolor}`}
+    >
       {icon}
-      <span>{title}</span>
+      {title}
     </div>
   );
 }

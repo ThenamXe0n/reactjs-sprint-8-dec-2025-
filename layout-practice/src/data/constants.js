@@ -1,4 +1,4 @@
-import avengerPoster from "../assets/tumbnail1.png"
+import avengerPoster from "../assets/tumbnail1.png";
 export const categoryData = [
   "ALL",
   "Music",
@@ -13,21 +13,19 @@ export const categoryData = [
   "comedy",
   "Mixes",
   "News",
-
 ];
 
-
 export const contentCards = [
-    {
-          title:"Avengers Doomsday LEAK Trailer Breakdown & Review",
-          img:"/tumbnail1.png",
-          channelName:"PJ Explained",
-          views:"256k",
-          time:"9hours",
-          channelLogo:
-            "https://tse3.mm.bing.net/th/id/OIP.2oYxfEsB7ZsKD5TvIjsT1QHaHa?pid=Api&P=0&h=220"
-          
-    },
+  {
+    showactionBtn:true,
+    title: "Avengers Doomsday LEAK Trailer Breakdown & Review",
+    img: "/tumbnail1.png",
+    channelName: "PJ Explained",
+    views: "256k",
+    time: "9hours",
+    channelLogo:
+      "https://tse3.mm.bing.net/th/id/OIP.2oYxfEsB7ZsKD5TvIjsT1QHaHa?pid=Api&P=0&h=220",
+  },
   {
     img: "https://picsum.photos/id/1011/400/250",
     title: "Exploring the Mountains | Travel Vlog",
@@ -110,4 +108,16 @@ export const contentCards = [
   },
 ];
 
-
+export const usersList = [
+  {
+    name: "PJ Explained",
+    profile:
+      "https://tse3.mm.bing.net/th/id/OIP.2oYxfEsB7ZsKD5TvIjsT1QHaHa?pid=Api&P=0&h=220",
+    email: "pj@gmail.com",
+  },
+  {
+    name: "Wander d",
+    profile: "https://i.pravatar.cc/100?img=1",
+    email: "WD@gmail.com",
+  },
+];

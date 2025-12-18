@@ -4,7 +4,8 @@ import { BsYoutube } from "react-icons/bs";
 import MyButton from "./ui/MyButton";
 import { GoPlus } from "react-icons/go";
 
-function NavBar() {
+function NavBar({loggedInUserDetails}) {
+  console.log("user details",loggedInUserDetails)
   return (
     <header className=" flex items-center h-fit justify-between  p-2">
       {/* // logocontainer */}
@@ -33,7 +34,7 @@ function NavBar() {
       <div className="flex items-center gap-x-2">
         <MyButton title={"Create"} icon={<GoPlus size={26} color="white"/>}/>
         <BellIcon/>
-        <img src="" alt="profile" className="size-10 rounded-full border-2 border-white"/>
+        <img src={loggedInUserDetails?.profile} alt="profile" className="size-10 rounded-full border-2 border-white"/>
       </div>
     </header>
   );

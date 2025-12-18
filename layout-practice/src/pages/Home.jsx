@@ -16,6 +16,7 @@ function Home() {
       <section className="grid grid-cols-3 p-3 gap-3">
         {contentCards.map((item, idx) => (
           <ContentCard
+            showBtn={item.showactionBtn}
             key={idx}
             title={item.title}
             img={item.img}
