@@ -5,7 +5,7 @@ import AdsSidebar from "./AdsSidebar";
 import Home from "../pages/Home";
 import About from "../pages/About";
 
-function Layout({ children }) {
+function Layout({ children ,name}) {
   
   return (
     <div>

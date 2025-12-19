@@ -5,7 +5,7 @@ import "./index.css"
 
 createRoot(document.getElementById('root'))//creating root element 
 .render( //this will render the app component inside the root element i,e screen
-  <StrictMode>
+  // <StrictMode>
     <App />
-  </StrictMode>,
+  // </StrictMode>,
 )

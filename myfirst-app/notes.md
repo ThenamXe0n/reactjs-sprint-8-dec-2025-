@@ -42,3 +42,11 @@
 
 ```
 
+
+
+### state management and HOOks 
+- Hooks ==> hooks are predefined function in react js 
+ -- how to identify a hook --> a hook always starts with use . example useState, useEffect,useLayoutEffect,useRef many more...
+
+ #### state management 
+ - hook 1 - useState
