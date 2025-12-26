@@ -20,18 +20,31 @@ const MoodData = [
     label: "Sad",
     image: "https://pbs.twimg.com/media/FdV55viaIAEBSnz.jpg",
   },
+  {
+    emoji: "🤩",
+    label: "Excited",
+    image:
+      "https://media5.bollywoodhungama.in/wp-content/uploads/2020/11/On-Set-with-the-Cast-of-Ludo-Behind-the-Scenes-Ludo-Netflix-India-255x191.jpeg",
+  },
+  {
+    emoji: "🤩",
+    label: "frustrated",
+    image:
+      "https://indianmemetemplates.com/wp-content/uploads/jethalal-headache.jpg",
+  },
+  {
+    emoji: "🤩",
+    label: "crying",
+    image:
+      "https://memesdownload.in/king-include/uploads/2023/08/976549-get%20(26).jpg",
+  },
 ];
 
-function MoodList({ setCurrentMood, currentMood }) {
+function MoodList({setCurrentMood}) {
   return (
     <section className=" flex items-center justify-center space-x-5">
       {MoodData.map((item, btnIndex) => (
-        <MoodButton
-          setCurrentMood={setCurrentMood}
-          key={btnIndex}
-          isActive={currentMood?.label === item?.label}
-          mood={item}
-        />
+        <MoodButton setCurrentMood={setCurrentMood} key={btnIndex} mood={item} />
       ))}
     </section>
   );

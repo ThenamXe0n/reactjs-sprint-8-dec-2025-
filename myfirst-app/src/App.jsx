@@ -5,6 +5,7 @@ import About from "./pages/About";
 import Home from "./pages/Home";
 import {FaPhone} from "react-icons/fa"
 import Profile from "./pages/Profile";
+import EffectHook from "./components/hooks/EffectHook";
 function App() {
 
   
@@ -20,7 +21,8 @@ function App() {
       {/* <Counter number={2} />
       <Counter number={5} />
       <Counter /> */}
-      <Profile/>
+      {/* <Profile/> */}
+      <EffectHook/>
     </>
   );
 }
