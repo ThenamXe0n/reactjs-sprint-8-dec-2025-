@@ -3,7 +3,7 @@ import { useState } from "react";
 function ProfileForm({ setProfileLoggedIn }) {
   console.log("profile form re rendered");
   const [data, setData] = useState({
-    fullName: "",
+    fullName: "nameet",
     email: "",
     contact: "",
     profileImage: "",

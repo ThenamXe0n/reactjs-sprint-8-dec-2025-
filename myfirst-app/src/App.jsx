@@ -7,6 +7,7 @@ import {FaPhone} from "react-icons/fa"
 import Profile from "./pages/Profile";
 import EffectHook from "./components/hooks/EffectHook";
 import ProductPage from "./pages/ProductPage";
+import UnControlledForm from "./components/forms/UnControlledForm";
 function App() {
 
   
@@ -24,7 +25,8 @@ function App() {
       <Counter /> */}
       {/* <Profile/> */}
       {/* <EffectHook/> */}
-      <ProductPage/>
+      {/* <ProductPage/> */}
+      <UnControlledForm/>
     </>
   );
 }
