@@ -1,5 +1,4 @@
 import React from "react";
-import ButtonOlivia from "./ui/ButtonOlivia";
 
 function ProductCard({
   poster = "https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
@@ -24,11 +23,9 @@ function ProductCard({
           <span>${price}</span>
           <del>${mrp}</del>{" "}
         </div>
-        <ButtonOlivia
-          title={"buy now"}
-          bgColor="bg-black"
-          fontColor="text-white"
-        />
+        <button className="bg-black text-white px-6 py-1 rounded-md">
+          Buy now
+        </button>
       </div>
     </div>
   );

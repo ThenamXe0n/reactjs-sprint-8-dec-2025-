@@ -25,8 +25,8 @@ function App() {
       <Counter /> */}
       {/* <Profile/> */}
       {/* <EffectHook/> */}
-      {/* <ProductPage/> */}
-      <UnControlledForm/>
+      <ProductPage/>
+      {/* <UnControlledForm/> */}
     </>
   );
 }

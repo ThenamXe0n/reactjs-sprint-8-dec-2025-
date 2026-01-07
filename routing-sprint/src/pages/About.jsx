@@ -18,20 +18,7 @@ export default function About() {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      {/* Header */}
-      <header className="bg-white border-b border-slate-200">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold text-slate-900">React Router</h1>
-            <nav className="flex gap-6">
-              <Link to="/" className="text-slate-600 hover:text-slate-900 transition-colors">Home</Link>
-              <a href="#" className="text-slate-900 font-medium">About</a>
-              <a href="#" className="text-slate-600 hover:text-slate-900 transition-colors">Docs</a>
-            </nav>
-          </div>
-        </div>
-      </header>
-
+   
       {/* Hero Section */}
       <section className="bg-white py-16">
         <div className="container mx-auto px-6 max-w-4xl text-center">
