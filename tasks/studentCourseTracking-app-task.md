@@ -94,7 +94,7 @@ Rules:
 - Disable buttons when required conditions are not met
 
 ---
-###V5️⃣ Add Course Page (/add-course)
+### 5️⃣ Add Course Page (/add-course)
 
 Create a form to add a new course.
 
