@@ -3,6 +3,9 @@ import "./App.css";
 import AddCoursesPage from "./pages/AddCoursesPage";
 import AllCourses from "./pages/AllCourses";
 import HomePage from "./pages/HomePage";
+import { Routes, Route, Link, useLocation } from "react-router";
+import NavBar from "./components/NavBar";
+import pagePaths from "./routes/pagePath";
 
 let dummyData = [
   {
@@ -23,11 +26,36 @@ let dummyData = [
 
 function App() {
   const [courseList, setCourseList] = useState(dummyData);
+  const location = useLocation();
+
+  console.log("location is ==>", location);
+
   return (
     <div>
-      <HomePage />
+      <NavBar />
+      <Routes>
+        <Route path={pagePaths.HOME} element={<HomePage />} />
+        <Route
+          path={pagePaths.ALL_COURSES}
+          element={<AllCourses courseList={courseList} />}
+        />
+        <Route
+          path={pagePaths.ADD_COURSE}
+          element={<AddCoursesPage setnewCourse={setCourseList} />}
+        />
+      </Routes>
+
+      {location.pathname !== pagePaths.ADD_COURSE && (
+        <Link
+          to={pagePaths.ADD_COURSE}
+          className="bg-black fixed bottom-6 right-6 rounded-full size-10 text-lg flex items-center justify-center text-white font-extrabold"
+        >
+          +
+        </Link>
+      )}
+      {/* <HomePage />
       <AllCourses courseList={courseList} />
-      <AddCoursesPage setnewCourse={setCourseList} />
+      <AddCoursesPage setnewCourse={setCourseList} /> */}
     </div>
   );
 }
