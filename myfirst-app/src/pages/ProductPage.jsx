@@ -43,7 +43,7 @@ alert(`Prev page clicked, skip is now ${skip - itemPerPage}`)
   return (
     <div>
       <h1 className="text-2xl font-bold text-center p-4 bg-black text-white">
-        Product Page
+        Product Page this is some text....
       </h1>
       <button
         onClick={fetchProductsData}

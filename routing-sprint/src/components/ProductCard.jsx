@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 function ProductCard({
   poster = "https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
@@ -6,9 +7,10 @@ function ProductCard({
   category = "furniture",
   price = 2000,
   mrp = 2500,
+  id
 }) {
   return (
-    <div className="shadow-lg rounded-md p-5 max-h-72">
+    <Link to={`/shop/product/${id}`} className="shadow-lg rounded-md p-5 max-h-72">
       <div className="h-3/5">
         <img
           className="w-full h-full object-cover"
@@ -27,7 +29,7 @@ function ProductCard({
           Buy now
         </button>
       </div>
-    </div>
+    </Link>
   );
 }
 

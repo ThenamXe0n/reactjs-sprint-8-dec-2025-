@@ -22,6 +22,13 @@ let dummyData = [
     title: "JavaScript ES6",
     level: "Intermediate",
   },
+  {
+    id: 3,
+    poster:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQA1B3CZLiBnekYkYmu3yhmJhUWiUgIJv6cyQ&s",
+    title: "express js ES6",
+    level: "advance",
+  },
 ];
 
 function App() {
@@ -42,6 +49,15 @@ function App() {
         <Route
           path={pagePaths.ADD_COURSE}
           element={<AddCoursesPage setnewCourse={setCourseList} />}
+        />
+
+        <Route
+          path="*"
+          element={
+            <section className="flex items-center bg-emerald-500 h-screen  justify-between text-4xl font-bold">
+              Page not found
+            </section>
+          }
         />
       </Routes>
 

@@ -6,6 +6,7 @@ import PageNotFound from "./pages/PageNotFound";
 import ProductPage from "./pages/ProductPage";
 import NavBar from "./components/NavBar";
 import Layout from "./components/Layout";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
 
 function App() {
   const maintainance = false;
@@ -43,12 +44,18 @@ function App() {
 
       </Routes> */}
 
-      <Routes>
+      {/* <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="shop" element={<ProductPage />} />
         </Route>
+      </Routes> */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/shop" element={<ProductPage />} />
+        <Route path="/shop/product/:id" element={<ProductDetailsPage />} />
       </Routes>
     </>
   );

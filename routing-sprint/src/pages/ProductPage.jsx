@@ -58,6 +58,7 @@ alert(`Prev page clicked, skip is now ${skip - itemPerPage}`)
             productList.map((item, idx) => (
               <ProductCard
                 key={idx}
+                id={item.id}
                 productname={item.title}
                 price={item.price}
                 poster={item.thumbnail}
