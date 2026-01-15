@@ -21,6 +21,13 @@ function Counter() {
     setNumber(number-1);
   }
 
+  function reset(){
+    setNumber(0)
+  }
+
+  function setManullaNumber(payload){
+    setNumber(payload)
+  }
 
 
   return (

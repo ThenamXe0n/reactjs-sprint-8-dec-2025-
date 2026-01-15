@@ -8,6 +8,8 @@ import Profile from "./pages/Profile";
 import EffectHook from "./components/hooks/EffectHook";
 import ProductPage from "./pages/ProductPage";
 import UnControlledForm from "./components/forms/UnControlledForm";
+import ExampleState from "./components/hooks/reducers/ExampleState";
+import QuotesReducer from "./components/hooks/reducers/QuotesReducer";
 function App() {
 
   
@@ -25,9 +27,12 @@ function App() {
       <Counter /> */}
       {/* <Profile/> */}
       {/* <EffectHook/> */}
-      kjhsdjfhkjsdhf
-      <ProductPage/>
+      {/* kjhsdjfhkjsdhf */}
+      {/* <ProductPage/> */}
+
       {/* <UnControlledForm/> */}
+    {/* <ExampleState/> */}
+    <QuotesReducer/>
     </>
   );
 }
