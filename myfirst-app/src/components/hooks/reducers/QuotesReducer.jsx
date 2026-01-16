@@ -3,6 +3,22 @@ import React, { useReducer } from "react";
 function reducer(state, action) {
   console.log("state is", state);
   console.log("action is", action);
+
+  switch (action.type) {
+    case "increment":
+      return {
+        ...state,
+        count: state.count + 1,
+      };
+    case "decrement":
+      return {
+        ...state,
+        count: state.count - 1,
+      };
+    default: 
+
+  }
+
   if (action.type === "increment") {
     return {
       ...state,
@@ -20,7 +36,7 @@ function reducer(state, action) {
     return {
       ...state,
       count: 0,
-      totalNumber:100
+      totalNumber: 100,
     };
   }
 
@@ -31,7 +47,7 @@ function reducer(state, action) {
   }
 }
 
-const QuotesReducer = () => {
+const QuotesReducer = ({name}) => {
   const [state, dispatch] = useReducer(reducer, { count: 0, totalNumber: 0 });
   console.log("state value", state);
   return (

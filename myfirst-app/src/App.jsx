@@ -1,39 +1,12 @@
 import "./App.css";
-import Counter from "./components/hooks/Counter";
-import Layout from "./components/Layout";
-import About from "./pages/About";
-import Home from "./pages/Home";
-import {FaPhone} from "react-icons/fa"
-import Profile from "./pages/Profile";
-import EffectHook from "./components/hooks/EffectHook";
-import ProductPage from "./pages/ProductPage";
-import UnControlledForm from "./components/forms/UnControlledForm";
-import ExampleState from "./components/hooks/reducers/ExampleState";
-import QuotesReducer from "./components/hooks/reducers/QuotesReducer";
+import Propdrilling from "./concept/Propdrilling";
 function App() {
-
-  
+  let money = "500 rupees"
   return (
-    <>
-      {/* <Layout name>
-        <section className="h-screen flex items-center font-extrabold text-5xl text-center">
-          i am child
-        </section>
-        <Home />
-        <About />
-      </Layout> */}
-      {/* <Counter number={2} />
-      <Counter number={5} />
-      <Counter /> */}
-      {/* <Profile/> */}
-      {/* <EffectHook/> */}
-      {/* kjhsdjfhkjsdhf */}
-      {/* <ProductPage/> */}
-
-      {/* <UnControlledForm/> */}
-    {/* <ExampleState/> */}
-    <QuotesReducer/>
-    </>
+    <section className="h-screen w-screen bg-green-300">
+      <h1 className="text-center font-bold text-3xl">1st layer</h1>
+      <Propdrilling money={money}  />
+    </section>
   );
 }
 
