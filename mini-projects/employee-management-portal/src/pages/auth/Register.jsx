@@ -1,109 +1,136 @@
-import React from "react";
+import React, { useState } from "react";
 import { roles } from "../../constant/data";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router";
+import pagePaths from "../../router/pagePaths";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 function Register() {
   const {
-    register, // form state //
-    handleSubmit, // onsubmit handle function
-    reset, //reset function
-    formState: { errors }, //errors state (object)
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
   } = useForm();
 
-  console.log("error", errors);
+  const [showPassword, setShowPassword] = useState(true);
+
+  function togglePasswordShow() {
+    setShowPassword((prev) => !prev);
+  }
 
   function handleRegisterEmployee(data) {
-    console.log("form captured data", data);
-    //fetch previous (if any )
     let previousEmployeeData =
       JSON.parse(localStorage.getItem("userData")) || [];
-    console.log("previous data", previousEmployeeData);
-    //add new data in previous array
-    let newData = [...previousEmployeeData, data];
-    console.log("newData", newData);
 
+    let newData = [...previousEmployeeData, data];
     localStorage.setItem("userData", JSON.stringify(newData));
-    alert("registed successfully");
+
+    alert("Registered successfully!");
+    reset();
   }
 
   return (
-    <div className="flex items-center justify-center bg-blue-200  h-screen ">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300 p-4">
       <form
         onSubmit={handleSubmit(handleRegisterEmployee)}
-        className="border bg-blue-600 text-white rounded-md space-y-2 p-4 min-h-[60vh] w-2/3"
+        className="bg-white text-gray-800 rounded-xl shadow-lg w-full max-w-2xl p-6 space-y-5"
       >
-        <h3 className="text-center text-2xl uppercase font-bold">
+        <h2 className="text-3xl font-bold text-center text-blue-600">
           Register Employee
-        </h3>
-        {/* //name  */}
-        <div className="flex flex-col gap-y-1">
-          <label htmlFor="name" className="text-lg font-semibold">
-            Name
-          </label>
+        </h2>
+
+        {/* Name */}
+        <div>
+          <label className="block font-medium mb-1">Name</label>
           <input
-            {...register("employeeName", { required: "name is required" })}
-            className="ring-2 rounded-sm p-1 ring-neutral-400"
-            id="name"
-            placeholder="enter employee name"
+            {...register("name", { required: "Name is required" })}
+            className="w-full px-3 py-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-blue-400"
+            placeholder="Enter employee name"
             type="text"
           />
           {errors.name && (
-            <p className="text-red-200">*{errors?.name?.message}</p>
+            <p className="text-sm text-red-500 mt-1">{errors.name.message}</p>
           )}
         </div>
-        {/* email  */}
-        <div className="flex flex-col gap-y-1">
-          <label htmlFor="email" className="text-lg font-semibold">
-            Email
-          </label>
+
+        {/* Email */}
+        <div>
+          <label className="block font-medium mb-1">Email</label>
           <input
-            {...register("email")}
-            className="ring-2 rounded-sm p-1 ring-neutral-400"
-            id="email"
-            placeholder="enter employee email"
-            required
+            {...register("email", { required: "Email is required" })}
+            className="w-full px-3 py-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-blue-400"
+            placeholder="Enter employee email"
             type="email"
           />
         </div>
-        {/* mobile number  */}
-        <div className="flex flex-col gap-y-1">
-          <label htmlFor="mobile" className="text-lg font-semibold">
-            Mobile
-          </label>
+
+        {/* Mobile */}
+        <div>
+          <label className="block font-medium mb-1">Mobile</label>
           <input
-            className="ring-2 rounded-sm p-1 ring-neutral-400"
-            id="mobile"
-            {...register("contact")}
-            placeholder="enter employee mobile"
-            required
-            maxLength={10}
+            {...register("contact", {
+              required: "Mobile number is required",
+              maxLength: {
+                value: 10,
+                message: "Max 10 digits allowed",
+              },
+            })}
+            className="w-full px-3 py-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-blue-400"
+            placeholder="Enter mobile number"
             type="text"
           />
+          {errors.contact && (
+            <p className="text-sm text-red-500 mt-1">
+              {errors.contact.message}
+            </p>
+          )}
         </div>
-        {/* joining date */}
-        <div className="flex flex-col gap-y-1">
-          <label htmlFor="joining" className="text-lg font-semibold">
-            Joining Date
-          </label>
+        {/* password  */}
+        <div>
+          <label className="block font-medium mb-1">Password</label>
+          <div className="flex items-center rounded-md border pr-4">
+            <input
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "should be min 6 digits",
+                },
+              })}
+              className="w-full px-3 py-2 outline-none"
+              placeholder="Enter password"
+              type={showPassword ? "text" : "password"}
+            />
+            <div onClick={togglePasswordShow}>
+              {showPassword ? <FiEye /> : <FiEyeOff />}
+            </div>
+          </div>
+          {errors.password && (
+            <p className="text-sm text-red-500 mt-1">
+              {errors.password.message}
+            </p>
+          )}
+        </div>
+
+        {/* Joining Date */}
+        <div>
+          <label className="block font-medium mb-1">Joining Date</label>
           <input
-            className="ring-2 rounded-sm p-1 ring-neutral-400"
-            id="joining"
-            required
-            {...register("joining")}
+            {...register("joining", { required: "Joining date is required" })}
+            className="w-full px-3 py-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-blue-400"
             type="date"
           />
         </div>
-        {/* role  */}
-        <div className="flex flex-col gap-y-1">
-          <label htmlFor="role" className="text-lg font-semibold">
-            role
-          </label>
+
+        {/* Role */}
+        <div>
+          <label className="block font-medium mb-1">Role</label>
           <select
-            {...register("role")}
-            className="ring-2 rounded-sm p-1 ring-neutral-400"
-            id="role"
+            {...register("role", { required: "Role is required" })}
+            className="w-full px-3 py-2 rounded-md border bg-white focus:outline-none focus:ring-2 focus:ring-blue-400"
           >
-            <option>--select role--</option>
+            <option value="">-- Select Role --</option>
             {roles.map((role, roleIndex) => (
               <option key={roleIndex} value={role}>
                 {role}
@@ -112,9 +139,24 @@ function Register() {
           </select>
         </div>
 
-        <button className="text-white bg-black px-3 py-1 w-full mt-4">
+        {/* Submit */}
+        <button
+          type="submit"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition duration-200"
+        >
           Register
         </button>
+        <div className="mt-10">
+          <p>
+            <span className="font-bold ">Already Registered ?</span>{" "}
+            <Link
+              className="text-blue-600 underline underline-offset-4"
+              to={pagePaths.LOGIN}
+            >
+              Login
+            </Link>
+          </p>
+        </div>
       </form>
     </div>
   );
