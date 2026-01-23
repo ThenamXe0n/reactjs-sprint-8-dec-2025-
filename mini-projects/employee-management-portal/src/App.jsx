@@ -8,10 +8,14 @@ import Home from "./pages/employee/Home";
 import MyTasks from "./pages/employee/MyTasks";
 import EmployeeProfile from "./pages/employee/EmployeeProfile";
 import AdminHome from "./pages/admin/AdminHome";
+import Protected from "./router/protectedRouters/Protected";
+import NavBar from "./components/NavBar";
+import AdminProtected from "./router/protectedRouters/AdminProtect";
 
 function App() {
   return (
     <>
+      <NavBar />
       <Routes>
         {/* public route  */}
         <Route
@@ -27,12 +31,26 @@ function App() {
         <Route path={pagePaths.REGISTER} element={<Register />} />
 
         {/* admin protected route  */}
-        <Route path={pagePaths.ADMIN} element={<Outlet />}>
+        <Route
+          path={pagePaths.ADMIN}
+          element={
+            <AdminProtected>
+              <Outlet />
+            </AdminProtected>
+          }
+        >
           <Route index element={<AdminHome />} />
         </Route>
 
         {/* employee route (private) */}
-        <Route path={pagePaths.EMPLOYEE} element={<Outlet />}>
+        <Route
+          path={pagePaths.EMPLOYEE}
+          element={
+            <Protected>
+              <Outlet />
+            </Protected>
+          }
+        >
           <Route index element={<Home />} />
           <Route path={pagePaths.MYTASK} element={<MyTasks />} />
           <Route

@@ -1,4 +1,5 @@
 const pagePaths = {
+  //pulic pages
   HOME: "/",
   LOGIN: "/login",
   REGISTER: "/register",

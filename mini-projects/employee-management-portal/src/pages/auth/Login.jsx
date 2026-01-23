@@ -33,6 +33,7 @@ function Login() {
     console.log("found user=>", isExist);
     if (!isExist) {
       toast.error("user not registered!!");
+      return;
     }
 
     //password matching
@@ -43,10 +44,18 @@ function Login() {
     }
 
     toast.success(`hi ! ${isExist.name} . you are successfully logged In`);
+    // storing user details in session
+    sessionStorage.setItem(
+      "loggedInUser",
+      JSON.stringify({ ...isExist, password: undefined }),
+    );
+    sessionStorage.setItem("isLoggedIn", "$logyesUser");
     if (isExist.role !== "admin") {
-      navigate(pagePaths.EMPLOYEE);
+      // navigate(pagePaths.EMPLOYEE);
+      window.location.replace(pagePaths.EMPLOYEE);
     } else {
-      navigate(pagePaths.ADMIN);
+      // navigate(pagePaths.ADMIN);
+      window.location.replace(pagePaths.ADMIN);
     }
   }
 
