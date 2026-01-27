@@ -36,6 +36,10 @@ function Login() {
       return;
     }
 
+    // check if req is approved by admin
+    if (isExist.isApproved === false) {
+      return toast.error("your registration is not approved by admin yet");
+    }
     //password matching
     let match = data.password === isExist.password;
     if (!match) {

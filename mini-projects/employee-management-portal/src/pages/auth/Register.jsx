@@ -20,10 +20,15 @@ function Register() {
   }
 
   function handleRegisterEmployee(data) {
+    // console.log(data);
+    let dataToRegister = {
+      ...data,
+      isApproved: data.role === "admin" ? true : false,
+    };
     let previousEmployeeData =
       JSON.parse(localStorage.getItem("userData")) || [];
 
-    let newData = [...previousEmployeeData, data];
+    let newData = [...previousEmployeeData, dataToRegister];
     localStorage.setItem("userData", JSON.stringify(newData));
 
     alert("Registered successfully!");
