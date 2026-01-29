@@ -11,6 +11,9 @@ import AdminHome from "./pages/admin/AdminHome";
 import Protected from "./router/protectedRouters/Protected";
 import NavBar from "./components/NavBar";
 import AdminProtected from "./router/protectedRouters/AdminProtect";
+import AdminNavBar from "./components/AdminNavBar";
+import EmployeManagementTab from "./components/EmployeManagementTab";
+import TaskManagementTab from "./components/TaskManagementTab";
 
 function App() {
   return (
@@ -35,11 +38,17 @@ function App() {
           path={pagePaths.ADMIN}
           element={
             <AdminProtected>
+              <AdminNavBar />
               <Outlet />
             </AdminProtected>
           }
         >
           <Route index element={<AdminHome />} />
+          <Route
+            path={pagePaths.EMPLOYEE_MANAGEMENT}
+            element={<EmployeManagementTab/>}
+          />
+          <Route path={pagePaths.TASK_MANAGEMENT} element={<TaskManagementTab/>} />
         </Route>
 
         {/* employee route (private) */}

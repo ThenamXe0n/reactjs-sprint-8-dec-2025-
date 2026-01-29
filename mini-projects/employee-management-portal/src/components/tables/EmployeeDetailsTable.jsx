@@ -1,23 +1,12 @@
-import React, { useContext} from "react";
-import StoreContext from "../../contextApi/storeContext";
+import React, { useContext } from 'react'
+import StoreContext from '../../contextApi/storeContext';
 
-function PermissionTable() {
-  const {filteredEmployeeList,setFilteredEmployeeList} = useContext(StoreContext) 
-
-  function handleApproveUser(id) {
-    let userListToUpdate = [...filteredEmployeeList];
-    userListToUpdate[id].isApproved = !userListToUpdate[id].isApproved;
-    setFilteredEmployeeList(userListToUpdate);
-    // filteredUser[id].isApproved = !filteredUser[id].isApproved;
-    // console.log("user to approve", filteredUser);
-    // console.log("updated user", userListToUpdate);
-    localStorage.setItem("userData", JSON.stringify(userListToUpdate));
-    // window.location.reload();
-  }
+function EmployeeDetailsTable() {
+  const {filteredEmployeeList} =useContext(StoreContext)
 
   return (
-    <div className="w-11/12 my-6 mx-auto">
-      <table className="border-collapse w-full">
+    <div className='flex-1'>
+         <table className="border-collapse w-full">
         <thead>
           <tr className="bg-blue-800 text-white capitalize">
             <th className="py-3 border">sr no</th>
@@ -45,7 +34,7 @@ function PermissionTable() {
                 <td className="py-1 text-center border">
                   <button
                     onClick={() => {
-                      handleApproveUser(userIndex);
+                     console.log("handle action");
                     }}
                   >
                     {!user.isApproved ? "✅" : "❌"}
@@ -63,7 +52,7 @@ function PermissionTable() {
         </tbody>
       </table>
     </div>
-  );
+  )
 }
 
-export default PermissionTable;
+export default EmployeeDetailsTable

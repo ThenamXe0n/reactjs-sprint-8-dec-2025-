@@ -1,7 +1,7 @@
-import React from "react";
 import { Navigate } from "react-router";
 import pagePaths from "../pagePaths";
-import toast from "react-hot-toast";
+
+import AdminNavBar from "../../components/AdminNavBar";
 
 function AdminProtected({ children }) {
   // const navigate = useNavigate();
@@ -15,7 +15,10 @@ function AdminProtected({ children }) {
   return (
     <div>
       {isLoggedIn === "$logyesUser" && detailsOfUser.role === "admin" ? (
-        children
+        <div>
+          
+          <main> {children}</main>
+        </div>
       ) : (
         <Navigate to={pagePaths.HOME} />
       )}
