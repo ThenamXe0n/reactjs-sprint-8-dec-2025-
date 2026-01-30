@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { roles } from "../../constant/data";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router";
 import pagePaths from "../../router/pagePaths";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import toast from "react-hot-toast";
+import StoreContext from "../../contextApi/storeContext";
 
 function Register() {
+  const { saveUserInStorage } = useContext(StoreContext);
   const {
     register,
     handleSubmit,
@@ -28,8 +31,18 @@ function Register() {
     let previousEmployeeData =
       JSON.parse(localStorage.getItem("userData")) || [];
 
-    let newData = [...previousEmployeeData, dataToRegister];
-    localStorage.setItem("userData", JSON.stringify(newData));
+    //validation to check duplicate emails
+    let isExist = previousEmployeeData.find(
+      (employee) => employee.email === data.email,
+    );
+    if (isExist) {
+      toast.error("email already registed !! try new email");
+      return;
+    }
+
+    saveUserInStorage(dataToRegister);
+    // let newData = [...previousEmployeeData, dataToRegister];
+    // localStorage.setItem("userData", JSON.stringify(newData));
 
     alert("Registered successfully!");
     reset();

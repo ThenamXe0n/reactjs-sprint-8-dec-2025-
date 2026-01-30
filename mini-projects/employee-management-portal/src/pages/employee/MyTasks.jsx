@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import TaskManageTable from "../../components/tables/TaskManageTable";
+import StoreContext from "../../contextApi/storeContext";
 
 function MyTasks() {
+  const { taskList, loggedInUser } = useContext(StoreContext);
+
+  let myTask = taskList.filter((task) => {
+    return task.assignedTo === loggedInUser.email;
+  });
+
   return (
-    <div className="flex items-center justify-center font-bold text-5xl h-screen ">
-      MyTasks
+    <div>
+      <TaskManageTable taskList={myTask} />
     </div>
   );
 }

@@ -1,11 +1,10 @@
-import { useContext } from "react";
 import StoreContext from "../../contextApi/storeContext";
 
-function TaskManageTable() {
-  const { taskList } = useContext(StoreContext);
+function TaskManageTable({taskList}) {
+  
   console.log("taskList", taskList);
 
-  let headerList = Object.keys(taskList[0])
+  let headerList = Object.keys(taskList[0] || {})
 
   return (
     <table className="border-collapse w-full col-span-3">
@@ -36,7 +35,7 @@ function TaskManageTable() {
         ) : (
           <tr className="bg-blue-800/30 text-black capitalize">
             <td className="py-1 text-center border" colSpan={6}>
-              No Users Found
+              No pending task 
             </td>
           </tr>
         )}

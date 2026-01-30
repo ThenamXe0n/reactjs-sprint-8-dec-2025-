@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import StoreContext from "../contextApi/storeContext";
 function TaskForm() {
-  const { setTaskList } = useContext(StoreContext);
+  const { setTaskList, taskList, saveTaskInStorage, filteredEmployeeList } =
+    useContext(StoreContext);
   const {
     register,
     reset,
@@ -10,10 +11,22 @@ function TaskForm() {
     formState: { errors },
   } = useForm();
 
+  console.log("employee list==>", filteredEmployeeList);
+
   // task add handler function
   function handleAddTask(data) {
+    let payload = {
+      taskId: `Task-${taskList.length + 1}`,
+      ...data,
+      status: "pending",
+      followupMessage:"",
+      createAt: new Date().toDateString(),
+
+    };
+
     console.log("Task Data:", data);
-   setTaskList((prev)=>[...prev,data])
+    setTaskList((prev) => [...prev, payload]);
+    saveTaskInStorage(payload)
 
     //   reset();
   }
@@ -37,7 +50,7 @@ function TaskForm() {
         {/* description */}
         <div>
           <label className="block font-medium mb-1">Task description</label>
-          <input
+          <textarea
             {...register("des", { required: "* description is required" })}
             className="w-full px-3 py-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-blue-400"
             placeholder="Enter task description"
@@ -51,14 +64,27 @@ function TaskForm() {
         {/* assignedTo  */}
         <div>
           <label className="block font-medium mb-1">Assigned To</label>
-          <input
+          {/* <input
             {...register("assignedTo", {
               required: "* assigned user is required",
             })}
             className="w-full px-3 py-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-blue-400"
             placeholder="Enter task description"
             type="text"
-          />
+          /> */}
+          <select
+            {...register("assignedTo", {
+              required: "* assigned user is required",
+            })}
+            className="w-full px-3 py-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-blue-400"
+          >
+            <option>--select employee--</option>
+            {filteredEmployeeList.map((employee, employeeIndex) => (
+              <option value={employee.email} key={employeeIndex}>
+                {employee?.name}-{employee.email}
+              </option>
+            ))}
+          </select>
           {errors.assignedTo && (
             <p className="text-sm text-red-500 mt-1">
               {errors.assignedTo.message}
@@ -66,6 +92,24 @@ function TaskForm() {
           )}
         </div>
 
+        {/* task deadline */}
+        <div>
+          <label className="block font-medium mb-1 capitalize">
+            deadline date
+          </label>
+          <input
+            {...register("deadline", {
+              required: "* task deadline date is required",
+            })}
+            className="w-full px-3 py-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-blue-400"
+            type="datetime-local"
+          />
+          {errors.deadline && (
+            <p className="text-sm text-red-500 mt-1">
+              {errors.deadline.message}
+            </p>
+          )}
+        </div>
         <button
           type="submit"
           className="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
