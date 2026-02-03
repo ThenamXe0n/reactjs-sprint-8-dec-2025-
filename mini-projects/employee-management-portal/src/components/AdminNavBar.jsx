@@ -14,7 +14,7 @@ function AdminNavBar() {
           <p>
             Welcome, {loggedInUser.name} {loggedInUser.role}
           </p>
-          <div className="bg-green-600 p-3">user count :{filteredEmployeeList.length} </div>
+          <div className="bg-green-600 p-3">user count :{filteredEmployeeList?.length} </div>
         </div>
         <div className="flex items-center gap-4">
           {" "}

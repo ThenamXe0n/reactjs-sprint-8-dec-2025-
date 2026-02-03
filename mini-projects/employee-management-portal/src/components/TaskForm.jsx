@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import StoreContext from "../contextApi/storeContext";
+import { assignTaskAPI } from "../services/apiCollections";
 function TaskForm() {
   const { setTaskList, taskList, saveTaskInStorage, filteredEmployeeList } =
     useContext(StoreContext);
@@ -19,14 +20,14 @@ function TaskForm() {
       taskId: `Task-${taskList.length + 1}`,
       ...data,
       status: "pending",
-      followupMessage:"",
+      followupMessage: "",
       createAt: new Date().toDateString(),
-
     };
 
     console.log("Task Data:", data);
     setTaskList((prev) => [...prev, payload]);
-    saveTaskInStorage(payload)
+    saveTaskInStorage(payload);
+    assignTaskAPI(payload);
 
     //   reset();
   }
@@ -79,7 +80,7 @@ function TaskForm() {
             className="w-full px-3 py-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-blue-400"
           >
             <option>--select employee--</option>
-            {filteredEmployeeList.map((employee, employeeIndex) => (
+            {filteredEmployeeList?.map((employee, employeeIndex) => (
               <option value={employee.email} key={employeeIndex}>
                 {employee?.name}-{employee.email}
               </option>

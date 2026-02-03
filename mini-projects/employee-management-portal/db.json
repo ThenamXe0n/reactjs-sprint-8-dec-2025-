@@ -1,0 +1,62 @@
+{
+  "users": [
+    {
+      "id": "38ef",
+      "name": "admin",
+      "email": "admin@gmail.com",
+      "contact": "8319850260",
+      "password": "nm@123",
+      "joining": "2026-02-03",
+      "role": "admin",
+      "isApproved": true
+    },
+    {
+      "id": "83c0",
+      "name": "admin",
+      "email": "admsdfdsfin@gmail.com",
+      "contact": "8319850260",
+      "password": "sdfsdf",
+      "joining": "2026-02-10",
+      "role": "executive",
+      "isApproved": false
+    },
+    {
+      "id": "ce1a",
+      "name": "aayush",
+      "email": "ayush@gmail.com",
+      "contact": "9879879898",
+      "password": "kjjkhh",
+      "joining": "2026-02-05",
+      "role": "employee",
+      "isApproved": true
+    }
+  ],
+  "tasks": [
+    {
+      "id": "1dd8",
+      "taskId": "Task-4",
+      "title": "new task",
+      "des": "test test",
+      "assignedTo": "ayush@gmail.com",
+      "deadline": "2026-02-04T18:41",
+      "status": "pending",
+      "followupMessage": "",
+      "createAt": "Mon Feb 02 2026"
+    },
+    {
+      "id": "6a2f",
+      "taskId": "Task-2",
+      "title": "task 60",
+      "des": "lkjlkjkljj",
+      "assignedTo": "ayush@gmail.com",
+      "deadline": "2026-02-27T18:57",
+      "status": "pending",
+      "followupMessage": "",
+      "createAt": "Mon Feb 02 2026"
+    }
+  ],
+  "products": [],
+  "carts": [],
+  "orders": [],
+  "category": []
+}

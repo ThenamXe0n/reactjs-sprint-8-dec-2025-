@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import StoreContext from "./storeContext";
 import { sampleTaskListData } from "../constant/sampleData";
 import toast from "react-hot-toast";
+import { fetchTaskAPI, fetchusersAPI } from "../services/apiCollections";
 
 function StoreProvider({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -12,7 +13,7 @@ function StoreProvider({ children }) {
     JSON.parse(sessionStorage.getItem("loggedInUser")) || {},
   );
   const [filteredEmployeeList, setFilteredEmployeeList] = useState(
-    JSON.parse(localStorage.getItem("userData")).filter((item) => {
+    JSON.parse(localStorage.getItem("userData"))?.filter((item) => {
       return item.email !== loggedInUser.email;
     }),
   );
@@ -34,6 +35,18 @@ function StoreProvider({ children }) {
     toast.success("item saved in storage");
   }
 
+  useEffect(() => {
+    async function loadInitialStates() {
+      let users = await fetchusersAPI();
+      let tasks = await fetchTaskAPI();
+      setEmployeeListData(users);
+      setFilteredEmployeeList(users);
+      setTaskList(tasks);
+      // let task = await fetchTaskAPI()
+    }
+    loadInitialStates();
+  }, []);
+
   return (
     <StoreContext.Provider
       value={{
@@ -48,7 +61,7 @@ function StoreProvider({ children }) {
         taskList,
         setTaskList,
         saveTaskInStorage,
-        saveUserInStorage
+        saveUserInStorage,
       }}
     >
       {children}

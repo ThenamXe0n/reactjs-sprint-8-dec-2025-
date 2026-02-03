@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router";
 import pagePaths from "../../router/pagePaths";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import toast from "react-hot-toast";
+import { fetchusersAPI } from "../../services/apiCollections";
 
 function Login() {
   const {
@@ -21,13 +22,13 @@ function Login() {
     setShowPassword((prev) => !prev);
   }
 
-  function handleLoginEmployee(data) {
-    console.log("details from login form =>", data);
+  async function handleLoginEmployee(data) {
     // get userData (your stored data array)
-    let registeredEmployeeData = JSON.parse(localStorage.getItem("userData")); //string =>array JSON.parse(string)
+    // let registeredEmployeeData = JSON.parse(localStorage.getItem("userData")); //string =>array JSON.parse(string)
+    let registeredEmployeeData = await fetchusersAPI(); //string =>array JSON.parse(string)
     // console.log("all registered employee", typeof registeredEmployeeData);
     //find the provided email in userData
-    let isExist = registeredEmployeeData.find((emp) => {
+    let isExist = registeredEmployeeData?.find((emp) => {
       return emp.email === data.email;
     });
     console.log("found user=>", isExist);

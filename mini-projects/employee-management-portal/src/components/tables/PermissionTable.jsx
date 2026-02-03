@@ -1,17 +1,25 @@
-import React, { useContext} from "react";
+import React, { useContext } from "react";
 import StoreContext from "../../contextApi/storeContext";
+import { approveuserAPI } from "../../services/apiCollections";
 
 function PermissionTable() {
-  const {filteredEmployeeList,setFilteredEmployeeList} = useContext(StoreContext) 
+  const { filteredEmployeeList, setFilteredEmployeeList } =
+    useContext(StoreContext);
+  console.log("filtered data", filteredEmployeeList);
 
-  function handleApproveUser(id) {
-    let userListToUpdate = [...filteredEmployeeList];
-    userListToUpdate[id].isApproved = !userListToUpdate[id].isApproved;
-    setFilteredEmployeeList(userListToUpdate);
+  async function handleApproveUser(id) {
+    let updatedUser = await approveuserAPI(id);
+    let idx = filteredEmployeeList?.findIndex((i) => i.id === id);
+    let filtered = [...filteredEmployeeList];
+    filtered[idx] = updatedUser;
+    setFilteredEmployeeList(filtered);
+    // let userListToUpdate = [...filteredEmployeeList];
+    // userListToUpdate[id].isApproved = !userListToUpdate[id].isApproved;
+    // setFilteredEmployeeList(userListToUpdate);
     // filteredUser[id].isApproved = !filteredUser[id].isApproved;
-    // console.log("user to approve", filteredUser);
-    // console.log("updated user", userListToUpdate);
-    localStorage.setItem("userData", JSON.stringify(userListToUpdate));
+    // // console.log("user to approve", filteredUser);
+    // // console.log("updated user", userListToUpdate);
+    // localStorage.setItem("userData", JSON.stringify(userListToUpdate));
     // window.location.reload();
   }
 
@@ -29,7 +37,8 @@ function PermissionTable() {
           </tr>
         </thead>
         <tbody>
-          {Array.isArray(filteredEmployeeList) && filteredEmployeeList.length > 0 ? (
+          {Array.isArray(filteredEmployeeList) &&
+          filteredEmployeeList.length > 0 ? (
             filteredEmployeeList.map((user, userIndex) => (
               <tr
                 key={userIndex}
@@ -45,7 +54,7 @@ function PermissionTable() {
                 <td className="py-1 text-center border">
                   <button
                     onClick={() => {
-                      handleApproveUser(userIndex);
+                      handleApproveUser(user.id);
                     }}
                   >
                     {!user.isApproved ? "✅" : "❌"}

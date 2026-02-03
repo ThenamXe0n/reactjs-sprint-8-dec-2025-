@@ -6,6 +6,7 @@ import pagePaths from "../../router/pagePaths";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import toast from "react-hot-toast";
 import StoreContext from "../../contextApi/storeContext";
+import { fetchusersAPI, registerUserAPI } from "../../services/apiCollections";
 
 function Register() {
   const { saveUserInStorage } = useContext(StoreContext);
@@ -22,14 +23,17 @@ function Register() {
     setShowPassword((prev) => !prev);
   }
 
-  function handleRegisterEmployee(data) {
+  async function handleRegisterEmployee(data) {
     // console.log(data);
     let dataToRegister = {
       ...data,
       isApproved: data.role === "admin" ? true : false,
     };
-    let previousEmployeeData =
-      JSON.parse(localStorage.getItem("userData")) || [];
+    // let previousEmployeeData =
+    //   JSON.parse(localStorage.getItem("userData")) || [];
+
+    let previousEmployeeData = await fetchusersAPI();
+    console.log("prev ",previousEmployeeData)
 
     //validation to check duplicate emails
     let isExist = previousEmployeeData.find(
@@ -41,6 +45,7 @@ function Register() {
     }
 
     saveUserInStorage(dataToRegister);
+    registerUserAPI(dataToRegister);
     // let newData = [...previousEmployeeData, dataToRegister];
     // localStorage.setItem("userData", JSON.stringify(newData));
 

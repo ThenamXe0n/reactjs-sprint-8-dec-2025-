@@ -16,7 +16,7 @@ function EmployeManagementTab() {
   const [showPassword, setShowPassword] = useState(true);
   const loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser")) || {};
   const filteredUserList =
-    JSON.parse(localStorage.getItem("userData")).filter((item) => {
+    JSON.parse(localStorage.getItem("userData"))?.filter((item) => {
       return item.email !== loggedInUser.email;
     }) || [];
   console.log(filteredUserList, "filteredUserList");
